@@ -1,0 +1,18 @@
+{
+  "trends_count": 30,
+  "scripts_count": 12,
+  "render_jobs_count": 12,
+  "uploads_ready": 12,
+  "break_even": {
+    "today": "2026-04-06",
+    "revenue_usd": 0.0,
+    "total_cost_usd": 50.0,
+    "gap_to_break_even_usd": 50.0
+  },
+  "optimization_actions": [
+    "Keep top formats and replicate their hook structure.",
+    "Pause bottom formats for next cycle.",
+    "Test one new angle while keeping niche constant.",
+    "Reduce generation volume if break-even gap is increasing."
+  ]
+}

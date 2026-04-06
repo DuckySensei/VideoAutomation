@@ -1,0 +1,323 @@
+{
+  "generated_at": "2026-04-06T18:06:06.717128+00:00",
+  "attribution_lines": [
+    "- Music: \\\"Sample Track\\\" licensed via Example Stock."
+  ],
+  "commands": [
+    {
+      "script_id": "86b9ba65c5472db3",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\86b9ba65c5472db3.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\86b9ba65c5472db3.mp4"
+      ]
+    },
+    {
+      "script_id": "0d71c17e3eba2684",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\0d71c17e3eba2684.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\0d71c17e3eba2684.mp4"
+      ]
+    },
+    {
+      "script_id": "15659b94617fa755",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\15659b94617fa755.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\15659b94617fa755.mp4"
+      ]
+    },
+    {
+      "script_id": "c84fd0e1da1133e7",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\c84fd0e1da1133e7.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\c84fd0e1da1133e7.mp4"
+      ]
+    },
+    {
+      "script_id": "5064023e62c2e145",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\5064023e62c2e145.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\5064023e62c2e145.mp4"
+      ]
+    },
+    {
+      "script_id": "33415d8a8a75a679",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\33415d8a8a75a679.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\33415d8a8a75a679.mp4"
+      ]
+    },
+    {
+      "script_id": "8ec42c0c332a66fc",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\8ec42c0c332a66fc.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\8ec42c0c332a66fc.mp4"
+      ]
+    },
+    {
+      "script_id": "c5f74e6e945b43c3",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\c5f74e6e945b43c3.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\c5f74e6e945b43c3.mp4"
+      ]
+    },
+    {
+      "script_id": "ad75873be0fa251c",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\ad75873be0fa251c.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\ad75873be0fa251c.mp4"
+      ]
+    },
+    {
+      "script_id": "37d07d975a28ac85",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\37d07d975a28ac85.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\37d07d975a28ac85.mp4"
+      ]
+    },
+    {
+      "script_id": "37a45cb9b7906eee",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\37a45cb9b7906eee.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\37a45cb9b7906eee.mp4"
+      ]
+    },
+    {
+      "script_id": "7eb9a7175da79cfa",
+      "command": [
+        "ffmpeg",
+        "-y",
+        "-i",
+        "assets\\media\\sample_bg_001.mp4",
+        "-i",
+        "assets\\media\\sample_music_001.mp3",
+        "-vf",
+        "subtitles=C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\subtitles\\7eb9a7175da79cfa.srt",
+        "-shortest",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-c:a",
+        "aac",
+        "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\7eb9a7175da79cfa.mp4"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "script_id": "86b9ba65c5472db3",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\86b9ba65c5472db3.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "0d71c17e3eba2684",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\0d71c17e3eba2684.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "15659b94617fa755",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\15659b94617fa755.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "c84fd0e1da1133e7",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\c84fd0e1da1133e7.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "5064023e62c2e145",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\5064023e62c2e145.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "33415d8a8a75a679",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\33415d8a8a75a679.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "8ec42c0c332a66fc",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\8ec42c0c332a66fc.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "c5f74e6e945b43c3",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\c5f74e6e945b43c3.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "ad75873be0fa251c",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\ad75873be0fa251c.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "37d07d975a28ac85",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\37d07d975a28ac85.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "37a45cb9b7906eee",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\37a45cb9b7906eee.mp4",
+      "rendered": false
+    },
+    {
+      "script_id": "7eb9a7175da79cfa",
+      "output_video": "C:\\Users\\dmant\\Documents\\VideoAutomation\\output\\renders\\7eb9a7175da79cfa.mp4",
+      "rendered": false
+    }
+  ],
+  "dry_run": true
+}

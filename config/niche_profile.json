@@ -1,0 +1,49 @@
+{
+  "niche_name": "AI Tools and Productivity",
+  "target_audience": "Solo creators, students, and early-career professionals who want practical productivity wins.",
+  "platform_primary": "youtube_shorts",
+  "content_templates": [
+    {
+      "id": "hook_3tips_cta",
+      "name": "Hook + 3 Tips + CTA",
+      "duration_seconds_target": 35,
+      "structure": [
+        "Hook (1 sentence, curiosity + clear benefit)",
+        "Tip 1 (specific, concrete action)",
+        "Tip 2 (specific, concrete action)",
+        "Tip 3 (specific, concrete action)",
+        "CTA (ask viewers to comment a problem to solve next)"
+      ]
+    },
+    {
+      "id": "myth_vs_fact",
+      "name": "Myth vs Fact",
+      "duration_seconds_target": 30,
+      "structure": [
+        "Myth statement",
+        "Why it sounds true (1 line)",
+        "Fact statement with practical angle",
+        "One immediate action the viewer can do today",
+        "CTA"
+      ]
+    },
+    {
+      "id": "top3_in_30s",
+      "name": "Top 3 in 30s",
+      "duration_seconds_target": 30,
+      "structure": [
+        "Context line",
+        "Pick #1 with use case",
+        "Pick #2 with use case",
+        "Pick #3 with use case",
+        "CTA"
+      ]
+    }
+  ],
+  "constraints": {
+    "max_title_chars": 70,
+    "max_description_chars": 2200,
+    "must_be_transformative": true,
+    "copyright_policy": "Only creator-owned, commercially licensed, or clearly permitted CC assets."
+  }
+}

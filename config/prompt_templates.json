@@ -1,0 +1,17 @@
+{
+  "system_style": "Write concise, practical, original short-form scripts. Avoid hype and unverifiable claims.",
+  "templates": {
+    "hook_3tips_cta": "Create a {duration_seconds_target}s script about '{topic}' in the {niche_name} niche. Use format: Hook, Tip1, Tip2, Tip3, CTA.",
+    "myth_vs_fact": "Create a {duration_seconds_target}s Myth vs Fact script about '{topic}' for {niche_name}. End with a clear action and CTA.",
+    "top3_in_30s": "Create a {duration_seconds_target}s 'Top 3' script about '{topic}' for {niche_name}. Each pick needs one practical use case."
+  },
+  "metadata_template": {
+    "title_pattern": "{topic}: {angle}",
+    "hashtags": [
+      "#shorts",
+      "#aitools",
+      "#productivity",
+      "#learnontiktok"
+    ]
+  }
+}

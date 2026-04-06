@@ -1,0 +1,3 @@
+asset_id,file_path,license_type,license_scope,source_url,proof_path_or_receipt,attribution_required,attribution_text,status
+sample_bg_001,assets/media/sample_bg_001.mp4,creator_owned,Full commercial reuse by channel owner,https://example.com/self-produced,docs/license_proofs/sample_bg_001_note.txt,no,,approved
+sample_music_001,assets/media/sample_music_001.mp3,commercial_stock,Commercial social use including monetization,https://example.com/stock-music,docs/license_proofs/sample_music_001_receipt.pdf,yes,Music: \"Sample Track\" licensed via Example Stock.,approved
