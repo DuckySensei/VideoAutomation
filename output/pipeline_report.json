@@ -1,8 +1,16 @@
 {
   "trends_count": 30,
-  "scripts_count": 12,
-  "render_jobs_count": 12,
-  "uploads_ready": 12,
+  "scripts_count": 1,
+  "render_jobs_count": 1,
+  "uploads_ready": 1,
+  "tiktok_uploads_ready": 1,
+  "manual_drop": {
+    "generated_at": "2026-04-06T20:40:49.950065+00:00",
+    "drop_root": "C:\\Users\\dmant\\Documents\\GitHub\\VideoAutomation\\output\\drop_for_manual_upload",
+    "folders": 1,
+    "videos_copied": 1,
+    "videos_missing": 0
+  },
   "break_even": {
     "today": "2026-04-06",
     "revenue_usd": 0.0,

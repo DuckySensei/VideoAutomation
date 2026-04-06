@@ -4,15 +4,15 @@ from pathlib import Path
 from typing import Dict, List
 
 
-def _next_publish_times(start_hour_local: int, items_count: int, gap_hours: int = 12) -> List[str]:
+def _next_publish_times(start_hour_utc: int, items_count: int, gap_hours: int = 12) -> List[str]:
     now = datetime.now(timezone.utc)
-    start = now.replace(hour=start_hour_local, minute=0, second=0, microsecond=0)
+    start = now.replace(hour=start_hour_utc, minute=0, second=0, microsecond=0)
     if start < now:
         start += timedelta(days=1)
     return [(start + timedelta(hours=i * gap_hours)).isoformat() for i in range(items_count)]
 
 
-def build_upload_queue(
+def build_tiktok_queue(
     script_queue_file: Path,
     render_jobs_file: Path,
     output_file: Path,
@@ -32,14 +32,13 @@ def build_upload_queue(
         render_info = render_map.get(sid, {})
         queue.append(
             {
-                "platform": "youtube",
+                "platform": "tiktok",
                 "script_id": sid,
                 "video_path": render_info.get("output_video", ""),
-                "title": item["metadata"]["title"],
-                "description": item["metadata"]["description"],
-                "privacyStatus": "private",
+                "caption": item.get("metadata", {}).get("tiktok_caption", item.get("metadata", {}).get("title", "")),
                 "publishAt": publish_times[idx],
                 "status": "ready_for_api_upload",
+                "is_short_form": True,
             }
         )
     payload = {"generated_at": datetime.now(timezone.utc).isoformat(), "uploads": queue}

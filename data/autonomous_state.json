@@ -1,0 +1,11 @@
+{
+  "script_max_items": 12,
+  "upload_start_hour_utc": 16,
+  "upload_gap_hours": 12,
+  "min_items": 6,
+  "max_items": 20,
+  "updated_at": "2026-04-06T18:32:48.649700+00:00",
+  "last_actions": [
+    "No metrics yet; keeping current knobs."
+  ]
+}

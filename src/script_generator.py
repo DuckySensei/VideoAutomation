@@ -53,14 +53,48 @@ def generate_script(topic: str, template_id: str) -> str:
     )
 
 
-def make_metadata(topic: str, script_text: str) -> Dict[str, str]:
-    title = f"{topic[:52]} | 3 practical wins #shorts"
-    description = (
+def _sanitize_topic(topic: str, max_chars: int = 56) -> str:
+    clean = re.sub(r"\s+", " ", topic).strip(" -|:")
+    return clean[:max_chars].strip()
+
+
+def _youtube_shorts_title(topic: str, template_id: str) -> str:
+    subject = _sanitize_topic(topic)
+    if template_id == "hook_3tips_cta":
+        title = f"3 AI productivity wins in 30s: {subject}"
+    elif template_id == "myth_vs_fact":
+        title = f"AI myth vs fact: {subject}"
+    else:
+        title = f"Top 3 AI shortcuts: {subject}"
+    if "#shorts" not in title.lower():
+        title = f"{title} #shorts"
+    return title[:100]
+
+
+def _tiktok_caption(topic: str, template_id: str) -> str:
+    subject = _sanitize_topic(topic, max_chars=72)
+    if template_id == "myth_vs_fact":
+        hook = f"Myth vs fact: {subject}"
+    elif template_id == "hook_3tips_cta":
+        hook = f"3 things to try today: {subject}"
+    else:
+        hook = f"Quick top 3: {subject}"
+    return f"{hook}\n#tiktok #productivity #aitools #shorts"
+
+
+def make_metadata(topic: str, script_text: str, template_id: str) -> Dict[str, str]:
+    youtube_title = _youtube_shorts_title(topic, template_id)
+    youtube_description = (
         f"{script_text}\n\n"
-        "This video uses original scripting and legally licensed assets.\n"
+        "Short-form educational content made with original scripting and legally licensed assets.\n"
         "#shorts #aitools #productivity"
     )
-    return {"title": title[:70], "description": description}
+    return {
+        "title": youtube_title[:100],
+        "description": youtube_description,
+        "tiktok_caption": _tiktok_caption(topic, template_id),
+        "is_short_form": True,
+    }
 
 
 def quality_gate(script_text: str, existing_texts: List[str], threshold: float = 0.72) -> Tuple[bool, float]:
@@ -100,7 +134,7 @@ def build_script_queue(
                 "topic": topic,
                 "template_id": template_id,
                 "script_text": script_text,
-                "metadata": make_metadata(topic, script_text),
+                "metadata": make_metadata(topic, script_text, template_id),
                 "source": {
                     "feed": idea.get("source_feed", ""),
                     "url": idea.get("source_url", ""),

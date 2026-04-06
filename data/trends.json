@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-06T18:06:06.680538+00:00",
+  "generated_at": "2026-04-06T20:40:32.154899+00:00",
   "ideas": [
     {
       "topic": "\"Cognitive surrender\" leads AI users to abandon logical thinking, research finds",
@@ -12,18 +12,23 @@
       "source_feed": "https://www.reddit.com/r/artificial/hot.rss"
     },
     {
+      "topic": "The open-source AI system that beat Claude Sonnet on a $500 GPU just shipped a coding assistant",
+      "source_url": "https://www.reddit.com/r/artificial/comments/1se9wkb/the_opensource_ai_system_that_beat_claude_sonnet/",
+      "source_feed": "https://www.reddit.com/r/artificial/hot.rss"
+    },
+    {
       "topic": "I have been coding for 11 years and I caught myself completely unable to debug a problem without AI assistance last month. That scared me more than anything I have seen in this industry.",
       "source_url": "https://www.reddit.com/r/artificial/comments/1sderg4/i_have_been_coding_for_11_years_and_i_caught/",
       "source_feed": "https://www.reddit.com/r/artificial/hot.rss"
     },
     {
-      "topic": "I Built a Functional Cognitive Engine",
-      "source_url": "https://www.reddit.com/r/artificial/comments/1se34g7/i_built_a_functional_cognitive_engine/",
+      "topic": "You can now give an AI agent its own email, phone number, wallet, computer, and voice. This is what the stack looks like",
+      "source_url": "https://www.reddit.com/r/artificial/comments/1sdiugx/you_can_now_give_an_ai_agent_its_own_email_phone/",
       "source_feed": "https://www.reddit.com/r/artificial/hot.rss"
     },
     {
-      "topic": "You can now give an AI agent its own email, phone number, wallet, computer, and voice. This is what the stack looks like",
-      "source_url": "https://www.reddit.com/r/artificial/comments/1sdiugx/you_can_now_give_an_ai_agent_its_own_email_phone/",
+      "topic": "I Built a Functional Cognitive Engine",
+      "source_url": "https://www.reddit.com/r/artificial/comments/1se34g7/i_built_a_functional_cognitive_engine/",
       "source_feed": "https://www.reddit.com/r/artificial/hot.rss"
     },
     {
@@ -37,18 +42,13 @@
       "source_feed": "https://www.reddit.com/r/artificial/hot.rss"
     },
     {
-      "topic": "a fun survey to look at how consumers perceive the use of AI in fashion brand marketing. (all ages, all genders)",
-      "source_url": "https://www.reddit.com/r/artificial/comments/1se2oju/a_fun_survey_to_look_at_how_consumers_perceive/",
+      "topic": "I turned ARC-AGI-3 into a daily browser game.",
+      "source_url": "https://www.reddit.com/r/artificial/comments/1se9nad/i_turned_arcagi3_into_a_daily_browser_game/",
       "source_feed": "https://www.reddit.com/r/artificial/hot.rss"
     },
     {
-      "topic": "Opinions on Google\u2019s search AI? Best practices?",
-      "source_url": "https://www.reddit.com/r/artificial/comments/1sdt5jn/opinions_on_googles_search_ai_best_practices/",
-      "source_feed": "https://www.reddit.com/r/artificial/hot.rss"
-    },
-    {
-      "topic": "Vazou claude! Lan\u00e7ou open claude, e agora?",
-      "source_url": "https://www.reddit.com/r/artificial/comments/1se620d/vazou_claude_lan\u00e7ou_open_claude_e_agora/",
+      "topic": "AI dolls offer companionship to the elderly",
+      "source_url": "https://www.reddit.com/r/artificial/comments/1se9kb9/ai_dolls_offer_companionship_to_the_elderly/",
       "source_feed": "https://www.reddit.com/r/artificial/hot.rss"
     },
     {
@@ -67,28 +67,13 @@
       "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
     },
     {
-      "topic": "Bernie Sanders: Congress must regulate AI before a handful of billionaires fundamentally transform humanity without democratic input.",
-      "source_url": "https://www.reddit.com/r/ChatGPT/comments/1sdy2i9/bernie_sanders_congress_must_regulate_ai_before_a/",
-      "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
-    },
-    {
       "topic": "Iran threatens \u2018complete and utter annihilation\u2019 of OpenAI's $30B Stargate AI data center in Abu Dhabi \u2014 regime posts video with satellite imagery of ChatGPT-maker's premier 1GW data center",
       "source_url": "https://www.reddit.com/r/ChatGPT/comments/1sdyzcn/iran_threatens_complete_and_utter_annihilation_of/",
       "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
     },
     {
-      "topic": "Yeah sure, totally fair",
-      "source_url": "https://www.reddit.com/r/ChatGPT/comments/1sdrnqk/yeah_sure_totally_fair/",
-      "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
-    },
-    {
-      "topic": "MIT tested 41 AI models on 11,000 real tasks. The \"good enough\" problem is worse than you think.",
-      "source_url": "https://www.reddit.com/r/ChatGPT/comments/1sduykg/mit_tested_41_ai_models_on_11000_real_tasks_the/",
-      "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
-    },
-    {
-      "topic": "Testing to see if a post here was legit",
-      "source_url": "https://www.reddit.com/r/ChatGPT/comments/1se31mu/testing_to_see_if_a_post_here_was_legit/",
+      "topic": "Bernie Sanders: Congress must regulate AI before a handful of billionaires fundamentally transform humanity without democratic input.",
+      "source_url": "https://www.reddit.com/r/ChatGPT/comments/1sdy2i9/bernie_sanders_congress_must_regulate_ai_before_a/",
       "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
     },
     {
@@ -97,13 +82,33 @@
       "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
     },
     {
-      "topic": "Wow chatgpt has a mind of its' own!! \ud83e\udee9",
-      "source_url": "https://www.reddit.com/r/ChatGPT/comments/1sdt7d3/wow_chatgpt_has_a_mind_of_its_own/",
+      "topic": "Yeah sure, totally fair",
+      "source_url": "https://www.reddit.com/r/ChatGPT/comments/1sdrnqk/yeah_sure_totally_fair/",
+      "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
+    },
+    {
+      "topic": "Testing to see if a post here was legit",
+      "source_url": "https://www.reddit.com/r/ChatGPT/comments/1se31mu/testing_to_see_if_a_post_here_was_legit/",
+      "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
+    },
+    {
+      "topic": "MIT tested 41 AI models on 11,000 real tasks. The \"good enough\" problem is worse than you think.",
+      "source_url": "https://www.reddit.com/r/ChatGPT/comments/1sduykg/mit_tested_41_ai_models_on_11000_real_tasks_the/",
+      "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
+    },
+    {
+      "topic": "OpenAI considered enriching itself by playing China, Russia, and the US against each other, starting a bidding war. \"What if we sold it to Putin?\"",
+      "source_url": "https://www.reddit.com/r/ChatGPT/comments/1se8ji6/openai_considered_enriching_itself_by_playing/",
       "source_feed": "https://www.reddit.com/r/ChatGPT/hot.rss"
     },
     {
       "topic": "/r/productivity is being hit hard by AI generated slop + advertising spam. Please hit REPORT on this content!",
       "source_url": "https://www.reddit.com/r/productivity/comments/1r4r2bm/rproductivity_is_being_hit_hard_by_ai_generated/",
+      "source_feed": "https://www.reddit.com/r/productivity/hot.rss"
+    },
+    {
+      "topic": "What do I do with my time now that I have it?",
+      "source_url": "https://www.reddit.com/r/productivity/comments/1se7aq9/what_do_i_do_with_my_time_now_that_i_have_it/",
       "source_feed": "https://www.reddit.com/r/productivity/hot.rss"
     },
     {
@@ -114,6 +119,11 @@
     {
       "topic": "Keeping track of work takes more energy than the work itself",
       "source_url": "https://www.reddit.com/r/productivity/comments/1sdupa5/keeping_track_of_work_takes_more_energy_than_the/",
+      "source_feed": "https://www.reddit.com/r/productivity/hot.rss"
+    },
+    {
+      "topic": "i feel like everything is wrong with me",
+      "source_url": "https://www.reddit.com/r/productivity/comments/1seahcw/i_feel_like_everything_is_wrong_with_me/",
       "source_feed": "https://www.reddit.com/r/productivity/hot.rss"
     },
     {
@@ -132,23 +142,13 @@
       "source_feed": "https://www.reddit.com/r/productivity/hot.rss"
     },
     {
+      "topic": "Every time I try to be productive I try to do the most then get overwhelmed and stop",
+      "source_url": "https://www.reddit.com/r/productivity/comments/1seappo/every_time_i_try_to_be_productive_i_try_to_do_the/",
+      "source_feed": "https://www.reddit.com/r/productivity/hot.rss"
+    },
+    {
       "topic": "Today has been the worst day so far.",
       "source_url": "https://www.reddit.com/r/productivity/comments/1sdxu24/today_has_been_the_worst_day_so_far/",
-      "source_feed": "https://www.reddit.com/r/productivity/hot.rss"
-    },
-    {
-      "topic": "How can I stop being so lazy, unmotivated, a procrastinator and tired all the time?",
-      "source_url": "https://www.reddit.com/r/productivity/comments/1sdcpu1/how_can_i_stop_being_so_lazy_unmotivated_a/",
-      "source_feed": "https://www.reddit.com/r/productivity/hot.rss"
-    },
-    {
-      "topic": "How are people using AI to secretly excel at your day job?",
-      "source_url": "https://www.reddit.com/r/productivity/comments/1sds1gr/how_are_people_using_ai_to_secretly_excel_at_your/",
-      "source_feed": "https://www.reddit.com/r/productivity/hot.rss"
-    },
-    {
-      "topic": "Fun takes on brain hacks like this.",
-      "source_url": "https://www.reddit.com/r/productivity/comments/1sdumgf/fun_takes_on_brain_hacks_like_this/",
       "source_feed": "https://www.reddit.com/r/productivity/hot.rss"
     }
   ]

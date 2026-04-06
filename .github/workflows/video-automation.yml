@@ -1,0 +1,116 @@
+# Scheduled / manual run of the autonomous pipeline (trends → render → upload hooks).
+#
+# Setup (GitHub → repo → Settings → Secrets and variables → Actions):
+#   YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN  — Google OAuth for YouTube API
+#   YOUTUBE_UPLOAD_COMMAND — same string as in config/autonomous.env.example (quotes preserved)
+#   METRICS_IMPORT_COMMAND — optional; omit to skip metrics hook
+#   YT_TOKEN_URI — optional; defaults to https://oauth2.googleapis.com/token
+#
+# Because *.mp3 / *.mp4 are gitignored, CI has no background music/video unless you either:
+#   • Set secret MEDIA_ASSETS_DOWNLOAD_URL to a private URL of a .zip whose contents include
+#     assets/media/sample_bg_001.mp4 and assets/music paths from assets/licenses/manifest.csv, or
+#   • Use a self-hosted runner with those files on disk, or
+#   • Seed a GitHub Actions cache via a separate workflow.
+#
+# Public forks: scheduled workflows are disabled by default; enable in Actions tab if needed.
+
+name: Video automation
+
+on:
+  schedule:
+    # Daily 16:00 UTC — change to your preferred window
+    - cron: "0 16 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: video-automation-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      YT_TOKEN_URI: ${{ secrets.YT_TOKEN_URI }}
+      YOUTUBE_UPLOAD_COMMAND: ${{ secrets.YOUTUBE_UPLOAD_COMMAND }}
+      METRICS_IMPORT_COMMAND: ${{ secrets.METRICS_IMPORT_COMMAND }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install FFmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg unzip
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Default YT_TOKEN_URI if unset
+        run: |
+          echo "YT_TOKEN_URI=${YT_TOKEN_URI:-https://oauth2.googleapis.com/token}" >> "$GITHUB_ENV"
+
+      - name: Download media assets (optional)
+        if: ${{ secrets.MEDIA_ASSETS_DOWNLOAD_URL != '' }}
+        env:
+          MEDIA_URL: ${{ secrets.MEDIA_ASSETS_DOWNLOAD_URL }}
+        run: |
+          set -euo pipefail
+          mkdir -p assets/media
+          tmp="$(mktemp)"
+          curl -fsSL "$MEDIA_URL" -o "$tmp"
+          if ! unzip -t "$tmp" >/dev/null 2>&1; then
+            echo "::error::MEDIA_ASSETS_DOWNLOAD_URL must point to a .zip archive containing paths under assets/media/ (see assets/licenses/manifest.csv)."
+            exit 1
+          fi
+          unzip -o "$tmp" -d .
+          rm -f "$tmp"
+
+      - name: Check required media paths from manifest
+        run: |
+          python - <<'PY'
+          import csv
+          import sys
+          from pathlib import Path
+
+          missing: list[str] = []
+          with open("assets/licenses/manifest.csv", newline="", encoding="utf-8") as f:
+              for row in csv.DictReader(f):
+                  p = (row.get("file_path") or "").strip()
+                  if p and not Path(p).is_file():
+                      missing.append(p)
+          for p in missing:
+              print(f"::warning::Missing file (gitignored or not downloaded): {p}")
+          if missing:
+              print(
+                  "::error::Manifest assets missing. Set Actions secret MEDIA_ASSETS_DOWNLOAD_URL to a zip of those files, "
+                  "or run on a machine that already has assets/media populated."
+              )
+              sys.exit(1)
+          PY
+
+      - name: Run autonomous cycle
+        run: |
+          python src/autonomous_service.py \
+            --base-dir . \
+            --monthly-fixed-cost 50 \
+            --enable-upload-hook \
+            --enable-metrics-hook
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: autonomous-report
+          path: output/autonomous_report.json
+          if-no-files-found: ignore

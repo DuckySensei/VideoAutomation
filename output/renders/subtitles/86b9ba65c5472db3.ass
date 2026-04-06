@@ -1,0 +1,17 @@
+[Script Info]
+Title: VideoAutomation
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,78,&H00FFFFFF,&H000000FF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,5,3,5,80,80,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.12,0:00:07.14,Default,,0,0,0,,Stop scrolling: "Cognitive surrender" leads AI users to abandon logical thinking‚ research finds can save you real time today.
+Dialogue: 0,0:00:07.14,0:00:16.00,Default,,0,0,0,,Tip one: Start with one tiny workflow for "cognitive surrender" leads ai users to abandon logical thinking‚ research finds and automate the repetitive step.
+Dialogue: 0,0:00:16.00,0:00:21.91,Default,,0,0,0,,Tip two: Track results for 7 days so you keep what works and drop what doesn't.
+Dialogue: 0,0:00:21.91,0:00:25.97,Default,,0,0,0,,Tip three: Use templates instead of starting from scratch every time.
+Dialogue: 0,0:00:25.97,0:00:30.40,Default,,0,0,0,,Comment your bottleneck and I will make the next short about it.

@@ -1,0 +1,55 @@
+# Local secrets — never commit
+.env
+.env.*
+!.env.example
+*.local.env
+config/autonomous.env
+config/*.local.*
+secrets/
+credentials/
+*.pem
+*.key
+client_secret*.json
+token.json
+*credentials*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Generated runtime data (optional: uncomment if you do not want output in git)
+# data/trends.json
+# data/script_queue.json
+# data/autonomous_state.json
+# data/metrics/
+# output/
+
+# Large media (too big for git — use local copies or CI download; see .github/workflows)
+*.mp3
+*.mp4
+
+# Manual upload bundles (video + sidecar text; can be large)
+output/drop_for_manual_upload/
+
+# Autonomous loop PID
+data/autonomous.pid
