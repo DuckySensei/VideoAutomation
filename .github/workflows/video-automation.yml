@@ -51,8 +51,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install FFmpeg and AWS CLI
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg awscli
+      # Ubuntu 24.04+ images often have no apt package "awscli"; use pip instead.
+      - name: Install FFmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - uses: actions/setup-python@v5
         with:
@@ -61,7 +62,9 @@ jobs:
           cache-dependency-path: requirements.txt
 
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install awscli
+          pip install -r requirements.txt
 
       - name: Default YT_TOKEN_URI if unset
         run: |
