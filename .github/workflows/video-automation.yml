@@ -22,8 +22,8 @@ name: Video automation
 
 on:
   schedule:
-    # Daily 16:00 UTC — change to your preferred window
-    - cron: "0 16 * * *"
+    # Every 5 days at 16:00 UTC (roughly 10 videos / 5-day batch at 12h spacing)
+    - cron: "0 16 */5 * *"
   workflow_dispatch:
 
 permissions:
@@ -46,7 +46,11 @@ jobs:
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
       YT_TOKEN_URI: ${{ secrets.YT_TOKEN_URI }}
       YOUTUBE_UPLOAD_COMMAND: ${{ secrets.YOUTUBE_UPLOAD_COMMAND }}
+      INSTAGRAM_UPLOAD_COMMAND: ${{ secrets.INSTAGRAM_UPLOAD_COMMAND }}
       METRICS_IMPORT_COMMAND: ${{ secrets.METRICS_IMPORT_COMMAND }}
+      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+      INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+      INSTAGRAM_VIDEO_URL_BASE: ${{ secrets.INSTAGRAM_VIDEO_URL_BASE }}
 
     steps:
       - uses: actions/checkout@v4
@@ -123,6 +127,7 @@ jobs:
             --base-dir . \
             --monthly-fixed-cost 50 \
             --enable-upload-hook \
+            --enable-instagram-hook \
             --enable-metrics-hook
 
       - name: Upload report artifact

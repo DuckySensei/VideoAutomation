@@ -156,3 +156,61 @@ def process_tiktok_queue(
         "skipped": skipped,
         "attempts": attempts,
     }
+
+
+def process_instagram_queue(
+    queue_file: Path,
+    base_dir: Path,
+    command_template: str = "",
+    dry_run: bool = False,
+) -> Dict[str, object]:
+    payload = json.loads(queue_file.read_text(encoding="utf-8"))
+    uploads: List[Dict[str, object]] = payload.get("uploads", [])
+    command_template = command_template or os.getenv("INSTAGRAM_UPLOAD_COMMAND", "").strip()
+
+    attempts = []
+    uploaded = 0
+    skipped = 0
+    failed = 0
+
+    for item in uploads:
+        if item.get("status") != "ready_for_api_upload":
+            skipped += 1
+            continue
+        if not command_template:
+            item["status"] = "awaiting_upload_integration"
+            item["last_upload_note"] = "Set INSTAGRAM_UPLOAD_COMMAND to enable autonomous uploads."
+            skipped += 1
+            continue
+        if dry_run:
+            item["status"] = "dry_run_upload_planned"
+            attempts.append({"script_id": item.get("script_id"), "ok": True, "dry_run": True})
+            continue
+
+        command = command_template.format(
+            video_path=item.get("video_path", ""),
+            caption=item.get("caption", ""),
+            publish_at=item.get("publishAt", ""),
+            script_id=item.get("script_id", ""),
+        )
+        result = _run_shell_command(command, base_dir)
+        attempts.append({"script_id": item.get("script_id"), **result})
+        if result["ok"]:
+            item["status"] = "uploaded"
+            item["uploaded_at"] = datetime.now(timezone.utc).isoformat()
+            uploaded += 1
+        else:
+            item["status"] = "upload_failed"
+            item["last_upload_error"] = result.get("stderr", "")
+            failed += 1
+
+    payload["generated_at"] = payload.get("generated_at") or datetime.now(timezone.utc).isoformat()
+    payload["last_processed_at"] = datetime.now(timezone.utc).isoformat()
+    queue_file.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    return {
+        "uploads_total": len(uploads),
+        "uploaded": uploaded,
+        "failed": failed,
+        "skipped": skipped,
+        "attempts": attempts,
+    }

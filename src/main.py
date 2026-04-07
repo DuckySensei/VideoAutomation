@@ -5,6 +5,7 @@ from pathlib import Path
 from analytics import ensure_metrics_csv, break_even_progress
 from env_loader import load_autonomous_env
 from manual_drop import build_manual_drop_folder
+from instagram_scheduler import build_instagram_queue
 from optimizer import build_optimization_report
 from render_pipeline import render_jobs
 from script_generator import build_script_queue
@@ -31,6 +32,7 @@ def run_once(
     render_output_dir = out_dir / "renders"
     upload_queue_file = out_dir / "youtube_upload_queue.json"
     tiktok_queue_file = out_dir / "tiktok_upload_queue.json"
+    instagram_queue_file = out_dir / "instagram_upload_queue.json"
     metrics_file = data_dir / "metrics" / "daily_metrics.csv"
     optimization_report_file = out_dir / "optimization_report.json"
 
@@ -57,6 +59,13 @@ def run_once(
         start_hour_utc=upload_start_hour_utc,
         gap_hours=upload_gap_hours,
     )
+    instagram_payload = build_instagram_queue(
+        script_queue_file,
+        render_output_dir / "render_jobs.json",
+        instagram_queue_file,
+        start_hour_utc=upload_start_hour_utc,
+        gap_hours=upload_gap_hours,
+    )
     drop_dir = out_dir / "drop_for_manual_upload"
     manual_drop = build_manual_drop_folder(
         script_queue_file,
@@ -74,6 +83,7 @@ def run_once(
         "render_jobs_count": len(render_payload.get("commands", [])),
         "uploads_ready": len(upload_payload.get("uploads", [])),
         "tiktok_uploads_ready": len(tiktok_payload.get("uploads", [])),
+        "instagram_uploads_ready": len(instagram_payload.get("uploads", [])),
         "manual_drop": manual_drop,
         "break_even": be,
         "optimization_actions": optimization.get("actions", []),

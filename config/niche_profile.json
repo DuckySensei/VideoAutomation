@@ -1,42 +1,42 @@
 {
-  "niche_name": "AI Tools and Productivity",
-  "target_audience": "Solo creators, students, and early-career professionals who want practical productivity wins.",
+  "niche_name": "Reddit Drama Stories",
+  "target_audience": "People who watch dramatic story breakdowns, relationship conflict, and social dilemma takes.",
   "platform_primary": "youtube_shorts",
   "content_templates": [
     {
       "id": "hook_3tips_cta",
-      "name": "Hook + 3 Tips + CTA",
+      "name": "Hook + What Happened + Stakes + CTA",
       "duration_seconds_target": 35,
       "structure": [
-        "Hook (1 sentence, curiosity + clear benefit)",
-        "Tip 1 (specific, concrete action)",
-        "Tip 2 (specific, concrete action)",
-        "Tip 3 (specific, concrete action)",
-        "CTA (ask viewers to comment a problem to solve next)"
+        "Hook (high tension opening line)",
+        "What happened (concise context)",
+        "Why this is messy (conflict and stakes)",
+        "Viewer verdict prompt",
+        "CTA (ask if they want Part 2)"
       ]
     },
     {
       "id": "myth_vs_fact",
-      "name": "Myth vs Fact",
+      "name": "OP vs Comment Section",
       "duration_seconds_target": 30,
       "structure": [
-        "Myth statement",
-        "Why it sounds true (1 line)",
-        "Fact statement with practical angle",
-        "One immediate action the viewer can do today",
-        "CTA"
+        "OP claim in one line",
+        "Counterpoint in one line",
+        "Who looks wrong and why",
+        "One cautionary takeaway",
+        "CTA for verdict"
       ]
     },
     {
       "id": "top3_in_30s",
-      "name": "Top 3 in 30s",
+      "name": "Parted Story in 30s",
       "duration_seconds_target": 30,
       "structure": [
-        "Context line",
-        "Pick #1 with use case",
-        "Pick #2 with use case",
-        "Pick #3 with use case",
-        "CTA"
+        "Set up the conflict",
+        "Escalation beat",
+        "Twist or reveal",
+        "Current outcome",
+        "CTA for next part"
       ]
     }
   ],

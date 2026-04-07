@@ -8,7 +8,12 @@ from pathlib import Path
 from typing import Dict
 
 from analytics import ensure_metrics_csv
-from automation_hooks import process_tiktok_queue, process_upload_queue, run_metrics_import_hook
+from automation_hooks import (
+    process_instagram_queue,
+    process_tiktok_queue,
+    process_upload_queue,
+    run_metrics_import_hook,
+)
 from env_loader import load_autonomous_env
 from main import run_once
 from optimizer import summarize_by_video
@@ -18,11 +23,11 @@ from process_util import is_process_running
 def _load_state(path: Path) -> Dict[str, object]:
     if not path.exists():
         return {
-            "script_max_items": 12,
+            "script_max_items": 10,
             "upload_start_hour_utc": 16,
             "upload_gap_hours": 12,
             "min_items": 6,
-            "max_items": 20,
+            "max_items": 10,
             "updated_at": datetime.now(timezone.utc).isoformat(),
             "last_actions": [],
         }
@@ -50,7 +55,7 @@ def _apply_safe_tuning(base_dir: Path, state: Dict[str, object]) -> Dict[str, ob
     low_watch = top.get("avg_watch_seconds", 0.0) < 8.0
     high_watch = top.get("avg_watch_seconds", 0.0) > 18.0
 
-    current = int(state.get("script_max_items", 12))
+    current = int(state.get("script_max_items", 10))
     min_items = int(state.get("min_items", 6))
     max_items = int(state.get("max_items", 20))
 
@@ -73,6 +78,7 @@ def run_autonomous_cycle(
     state_path: Path,
     enable_upload_hook: bool,
     enable_tiktok_hook: bool,
+    enable_instagram_hook: bool,
     enable_metrics_hook: bool,
     upload_dry_run: bool,
 ) -> Dict[str, object]:
@@ -83,7 +89,7 @@ def run_autonomous_cycle(
     pipeline_report = run_once(
         base_dir=base_dir,
         monthly_fixed_cost=monthly_fixed_cost,
-        script_max_items=int(state.get("script_max_items", 12)),
+        script_max_items=int(state.get("script_max_items", 10)),
         upload_start_hour_utc=int(state.get("upload_start_hour_utc", 16)),
         upload_gap_hours=int(state.get("upload_gap_hours", 12)),
     )
@@ -104,6 +110,12 @@ def run_autonomous_cycle(
         hook_result = process_tiktok_queue(queue_file, base_dir, dry_run=upload_dry_run)
         tiktok_hook = {"executed": True, "ok": hook_result.get("failed", 0) == 0, "result": hook_result}
 
+    instagram_hook = {"executed": False, "ok": True, "reason": "disabled"}
+    if enable_instagram_hook:
+        queue_file = base_dir / "output" / "instagram_upload_queue.json"
+        hook_result = process_instagram_queue(queue_file, base_dir, dry_run=upload_dry_run)
+        instagram_hook = {"executed": True, "ok": hook_result.get("failed", 0) == 0, "result": hook_result}
+
     autonomous_report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "state": state,
@@ -111,6 +123,7 @@ def run_autonomous_cycle(
         "metrics_hook": metrics_hook,
         "upload_hook": upload_hook,
         "tiktok_hook": tiktok_hook,
+        "instagram_hook": instagram_hook,
     }
     report_path = base_dir / "output" / "autonomous_report.json"
     report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -125,6 +138,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--state-file", default="data/autonomous_state.json", help="Path to autonomous tuning state")
     parser.add_argument("--enable-upload-hook", action="store_true", help="Process upload queue with upload hook")
     parser.add_argument("--enable-tiktok-hook", action="store_true", help="Process TikTok queue with upload hook")
+    parser.add_argument("--enable-instagram-hook", action="store_true", help="Process Instagram queue with upload hook")
     parser.add_argument("--enable-metrics-hook", action="store_true", help="Run metrics import hook command")
     parser.add_argument("--upload-dry-run", action="store_true", help="Simulate upload hook without command execution")
     parser.add_argument("--loop", action="store_true", help="Run continuously on an interval")
@@ -160,6 +174,7 @@ if __name__ == "__main__":
             state_path=state_file,
             enable_upload_hook=args.enable_upload_hook,
             enable_tiktok_hook=args.enable_tiktok_hook,
+            enable_instagram_hook=args.enable_instagram_hook,
             enable_metrics_hook=args.enable_metrics_hook,
             upload_dry_run=args.upload_dry_run,
         )
@@ -194,6 +209,7 @@ if __name__ == "__main__":
                     state_path=state_file,
                     enable_upload_hook=args.enable_upload_hook,
                     enable_tiktok_hook=args.enable_tiktok_hook,
+                    enable_instagram_hook=args.enable_instagram_hook,
                     enable_metrics_hook=args.enable_metrics_hook,
                     upload_dry_run=args.upload_dry_run,
                 )

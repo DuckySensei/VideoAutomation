@@ -1,18 +1,18 @@
 {
   "trends_count": 30,
-  "scripts_count": 1,
-  "render_jobs_count": 1,
-  "uploads_ready": 1,
-  "tiktok_uploads_ready": 1,
+  "scripts_count": 12,
+  "render_jobs_count": 12,
+  "uploads_ready": 12,
+  "tiktok_uploads_ready": 12,
   "manual_drop": {
-    "generated_at": "2026-04-06T20:51:40.342100+00:00",
+    "generated_at": "2026-04-07T15:19:41.517932+00:00",
     "drop_root": "C:\\Users\\dmant\\Documents\\GitHub\\VideoAutomation\\output\\drop_for_manual_upload",
-    "folders": 1,
-    "videos_copied": 1,
-    "videos_missing": 0
+    "folders": 12,
+    "videos_copied": 9,
+    "videos_missing": 3
   },
   "break_even": {
-    "today": "2026-04-06",
+    "today": "2026-04-07",
     "revenue_usd": 0.0,
     "total_cost_usd": 50.0,
     "gap_to_break_even_usd": 50.0
