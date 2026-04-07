@@ -6,11 +6,15 @@
 #   METRICS_IMPORT_COMMAND — optional; omit to skip metrics hook
 #   YT_TOKEN_URI — optional; defaults to https://oauth2.googleapis.com/token
 #
-# Because *.mp3 / *.mp4 are gitignored, CI has no background music/video unless you either:
-#   • Set secret MEDIA_ASSETS_DOWNLOAD_URL to a private URL of a .zip whose contents include
-#     assets/media/sample_bg_001.mp4 and assets/music paths from assets/licenses/manifest.csv, or
-#   • Use a self-hosted runner with those files on disk, or
-#   • Seed a GitHub Actions cache via a separate workflow.
+# Large media (*.mp3 / *.mp4) is gitignored. Supply assets via S3 sync or a self-hosted runner:
+#
+#   S3 — create a private prefix with the same filenames as assets/licenses/manifest.csv
+#   (e.g. s3://your-bucket/videoautomation-media/sample_bg_001.mp4).
+#   Secrets: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION (e.g. us-east-1),
+#   S3_MEDIA_PREFIX = s3://your-bucket/videoautomation-media/  (trailing slash)
+#   IAM: s3:ListBucket on the prefix + s3:GetObject on objects under that prefix.
+#
+#   Self-hosted runner — copy assets/media onto the machine once; omit AWS media secrets.
 #
 # Public forks: scheduled workflows are disabled by default; enable in Actions tab if needed.
 
@@ -32,6 +36,9 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
+    # Required for "Environment secrets" (Settings → Environments → your env).
+    # Repository secrets still work; environment secrets only apply when this is set.
+    environment: Video Automater
     timeout-minutes: 120
     env:
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
@@ -44,8 +51,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install FFmpeg
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg unzip
+      - name: Install FFmpeg and AWS CLI
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg awscli
 
       - uses: actions/setup-python@v5
         with:
@@ -60,25 +67,22 @@ jobs:
         run: |
           echo "YT_TOKEN_URI=${YT_TOKEN_URI:-https://oauth2.googleapis.com/token}" >> "$GITHUB_ENV"
 
-      # secrets cannot be used in step `if:` — skip download in the script when unset.
-      - name: Download media assets (optional)
+      # secrets cannot be used in step `if:` — skip in script when unset.
+      - name: Sync media from S3 (optional)
         env:
-          MEDIA_URL: ${{ secrets.MEDIA_ASSETS_DOWNLOAD_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          S3_MEDIA_PREFIX: ${{ secrets.S3_MEDIA_PREFIX }}
         run: |
-          if [ -z "${MEDIA_URL:-}" ]; then
-            echo "MEDIA_ASSETS_DOWNLOAD_URL not set; skipping media download."
+          if [ -z "${AWS_ACCESS_KEY_ID:-}" ] || [ -z "${AWS_SECRET_ACCESS_KEY:-}" ] || [ -z "${S3_MEDIA_PREFIX:-}" ]; then
+            echo "S3 media sync not configured; skipping (set AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, S3_MEDIA_PREFIX)."
             exit 0
           fi
           set -euo pipefail
           mkdir -p assets/media
-          tmp="$(mktemp)"
-          curl -fsSL "$MEDIA_URL" -o "$tmp"
-          if ! unzip -t "$tmp" >/dev/null 2>&1; then
-            echo "::error::MEDIA_ASSETS_DOWNLOAD_URL must point to a .zip archive containing paths under assets/media/ (see assets/licenses/manifest.csv)."
-            exit 1
-          fi
-          unzip -o "$tmp" -d .
-          rm -f "$tmp"
+          export AWS_DEFAULT_REGION="${AWS_REGION:-us-east-1}"
+          aws s3 sync "$S3_MEDIA_PREFIX" assets/media/
 
       - name: Check required media paths from manifest
         run: |
@@ -97,8 +101,10 @@ jobs:
               print(f"::warning::Missing file (gitignored or not downloaded): {p}")
           if missing:
               print(
-                  "::error::Manifest assets missing. Set Actions secret MEDIA_ASSETS_DOWNLOAD_URL to a zip of those files, "
-                  "or run on a machine that already has assets/media populated."
+                  "::error::Manifest assets missing after S3 sync. Ensure S3_MEDIA_PREFIX matches your bucket "
+                  "(files named like sample_bg_001.mp4 in that prefix), IAM allows s3:ListBucket and s3:GetObject, "
+                  "and AWS secrets are set on this repository or environment. "
+                  "Self-hosted: place files under assets/media/ on the runner."
               )
               sys.exit(1)
           PY
