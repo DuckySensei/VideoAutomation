@@ -60,11 +60,15 @@ jobs:
         run: |
           echo "YT_TOKEN_URI=${YT_TOKEN_URI:-https://oauth2.googleapis.com/token}" >> "$GITHUB_ENV"
 
+      # secrets cannot be used in step `if:` — skip download in the script when unset.
       - name: Download media assets (optional)
-        if: ${{ secrets.MEDIA_ASSETS_DOWNLOAD_URL != '' }}
         env:
           MEDIA_URL: ${{ secrets.MEDIA_ASSETS_DOWNLOAD_URL }}
         run: |
+          if [ -z "${MEDIA_URL:-}" ]; then
+            echo "MEDIA_ASSETS_DOWNLOAD_URL not set; skipping media download."
+            exit 0
+          fi
           set -euo pipefail
           mkdir -p assets/media
           tmp="$(mktemp)"

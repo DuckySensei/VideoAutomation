@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-06T20:40:49.932436+00:00",
+  "generated_at": "2026-04-06T20:51:40.324296+00:00",
   "render_settings": {
     "tts_enabled": true,
     "tts_voice": "en-US-GuyNeural",
@@ -22,7 +22,7 @@
         "ffmpeg",
         "-y",
         "-ss",
-        "1779.8545744121561",
+        "746.7656760371328",
         "-t",
         "30.48",
         "-i",
@@ -48,7 +48,7 @@
         "C:\\Users\\dmant\\Documents\\GitHub\\VideoAutomation\\output\\renders\\86b9ba65c5472db3.mp4"
       ],
       "mode": "tts_vertical",
-      "random_start_sec": 1779.8545744121561,
+      "random_start_sec": 746.7656760371328,
       "segment_sec": 30.48
     }
   ],
@@ -59,7 +59,7 @@
       "rendered": true,
       "ffmpeg_exit_code": 0,
       "mode": "tts_vertical",
-      "random_start_sec": 1779.8545744121561,
+      "random_start_sec": 746.7656760371328,
       "segment_sec": 30.48
     }
   ],
