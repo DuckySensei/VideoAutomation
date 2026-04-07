@@ -51,9 +51,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Ubuntu 24.04+ images often have no apt package "awscli"; use pip instead.
-      - name: Install FFmpeg
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      # Do not use apt install awscli — not available on Ubuntu 24.04+ runners. Official bundle works everywhere.
+      - name: Install FFmpeg and unzip
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg unzip
+
+      - name: Install AWS CLI v2
+        run: |
+          curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
+          unzip -q /tmp/awscliv2.zip -d /tmp
+          sudo /tmp/aws/install --update
+          aws --version
 
       - uses: actions/setup-python@v5
         with:
@@ -62,9 +69,7 @@ jobs:
           cache-dependency-path: requirements.txt
 
       - name: Install Python dependencies
-        run: |
-          pip install awscli
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Default YT_TOKEN_URI if unset
         run: |
