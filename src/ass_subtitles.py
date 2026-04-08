@@ -1,6 +1,7 @@
 """ASS subtitles: large bold text, centered (Shorts / Reels / TikTok)."""
 from pathlib import Path
 from typing import List
+import re
 
 
 def _ass_escape(text: str) -> str:
@@ -25,6 +26,39 @@ def _word_weight(line: str) -> float:
     return w
 
 
+def _wrap_words(text: str, max_chars: int = 38) -> List[str]:
+    words = text.split()
+    if not words:
+        return []
+    out: List[str] = []
+    cur = words[0]
+    for w in words[1:]:
+        trial = f"{cur} {w}"
+        if len(trial) <= max_chars:
+            cur = trial
+        else:
+            out.append(cur)
+            cur = w
+    out.append(cur)
+    return out
+
+
+def _chunk_caption_lines(lines: List[str], max_chars: int = 38, max_rows_per_cue: int = 2) -> List[str]:
+    # Convert long script paragraphs into short, readable ASS cues (1-2 rows each).
+    chunks: List[str] = []
+    sentence_re = re.compile(r"(?<=[.!?])\s+")
+    for raw in lines:
+        for sentence in sentence_re.split(raw):
+            sentence = sentence.strip()
+            if not sentence:
+                continue
+            wrapped = _wrap_words(sentence, max_chars=max_chars)
+            for i in range(0, len(wrapped), max_rows_per_cue):
+                cue_lines = wrapped[i : i + max_rows_per_cue]
+                chunks.append(r"\N".join(cue_lines))
+    return [c for c in chunks if c.strip()]
+
+
 def write_ass_centered(
     lines: List[str],
     total_duration_sec: float,
@@ -38,6 +72,7 @@ def write_ass_centered(
     Optional padding trims the window so cues are not glued to file edges (TTS attack / tail).
     """
     cleaned = [ln.strip() for ln in lines if ln.strip()]
+    cleaned = _chunk_caption_lines(cleaned, max_chars=38, max_rows_per_cue=2)
     if not cleaned:
         cleaned = [" "]
 

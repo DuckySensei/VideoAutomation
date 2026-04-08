@@ -1,0 +1,23 @@
+[Script Info]
+Title: VideoAutomation
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,78,&H00FFFFFF,&H000000FF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,5,3,5,80,80,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.12,0:00:01.66,Default,,0,0,0,,PART 2 OF 2
+Dialogue: 0,0:00:01.66,0:00:06.65,Default,,0,0,0,,Title: AITA for leaving my phone on\\N“Do Not Disturb” at night and making
+Dialogue: 0,0:00:06.65,0:00:07.80,Default,,0,0,0,,my mom worry?
+Dialogue: 0,0:00:07.80,0:00:12.80,Default,,0,0,0,,Story: Also‚ my mom tends to be super\\Noverbearing‚ not in a normal‚ motherly
+Dialogue: 0,0:00:12.80,0:00:13.18,Default,,0,0,0,,way.
+Dialogue: 0,0:00:13.18,0:00:18.56,Default,,0,0,0,,She has literally said that whenever\\Nmy sister or I go out‚ she can’t relax
+Dialogue: 0,0:00:18.56,0:00:20.87,Default,,0,0,0,,until we tell her we’re home.
+Dialogue: 0,0:00:20.87,0:00:24.71,Default,,0,0,0,,I’ve told her multiple times that\\Nthose feelings aren’t normal‚ but
+Dialogue: 0,0:00:24.71,0:00:28.17,Default,,0,0,0,,she’s basically been the same for the\\Npast 30 years.
+Dialogue: 0,0:00:28.17,0:00:30.86,Default,,0,0,0,,Final Reddit verdict: Most\\Nverdict-tagged comments currently lean
+Dialogue: 0,0:00:30.86,0:00:31.24,Default,,0,0,0,,NTA.
