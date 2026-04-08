@@ -1,5 +1,5 @@
 {
-  "script_max_items": 9,
+  "script_max_items": 10,
   "upload_start_hour_utc": 16,
   "upload_gap_hours": 12,
   "min_items": 6,
